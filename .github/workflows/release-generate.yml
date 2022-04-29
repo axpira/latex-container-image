@@ -13,5 +13,5 @@ jobs:
         run: |
           image=${{ github.repository}}:${{ github.sha }}
           docker build . -t ghcr.io/$image
-          echo $PAT_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
+          echo ${{ secrets.PAT_TOKEN }} | docker login ghcr.io -u USERNAME --password-stdin
           docker push ghcr.io/$image
