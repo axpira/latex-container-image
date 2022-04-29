@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          docker build . -t ghcr.io/${{ github.repository}}:${{ github.ref }}
+          docker build . -t ghcr.io/${{ github.repository}}:${{ github.sha }}
           echo $PAT_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
-          docker push ghcr.io/${{ github.repository}}:${{ github.ref }}
+          docker push ghcr.io/${{ github.repository}}:${{ github.sha }}
