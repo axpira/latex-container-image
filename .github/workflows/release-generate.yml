@@ -1,0 +1,14 @@
+name: GitHub Actions Create Image
+on: push
+# on:
+#   push:
+#     tags:
+#       - "v*.*.*"
+jobs:
+  New Image:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          docker build . -t ghcr.io/${{ github.repository}}:${{ github.ref }}
+          echo $PAT_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
+          docker push ghcr.io/${{ github.repository}}:${{ github.ref }}
