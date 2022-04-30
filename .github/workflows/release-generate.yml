@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Create and publish image
         run: |
-          image=${{ github.repository}}:${{ github.ref }}
+          image=${{ github.repository}}:${{ github.ref_name }}
           docker build . -t ghcr.io/$image
           echo ${{ secrets.PAT_TOKEN }} | docker login ghcr.io -u USERNAME --password-stdin
           docker push ghcr.io/$image
